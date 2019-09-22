@@ -1,9 +1,10 @@
 import os
-cwd = os.getcwd()
+cwd = os.getcwd() # returns current working directory (cwd)
+
 imageDirectory = cwd + "/images"
 if not os.path.exists(imageDirectory):
-    os.makedirs(imageDirectory)
-# print(cwd,"CWD>>>>>>>>")
+    os.makedirs(imageDirectory) # if path not present then create it
+
 # -*- coding: utf-8 -*-
 
 # Scrapy settings for IndiaMartScraping project
@@ -26,11 +27,13 @@ NEWSPIDER_MODULE = 'IndiaMartScraping.spiders'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
+# Enable Image pipeline & mention the file which should handle it.
 ITEM_PIPELINES = {
     'scrapy.pipelines.images.ImagesPipeline': 1,
     'IndiaMartScraping.customImagePipeline.MyImagesPipeline': 1,
 }
-IMAGES_STORE = imageDirectory
+IMAGES_STORE = imageDirectory # mention a path for scrapy to save images after scraping them
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 

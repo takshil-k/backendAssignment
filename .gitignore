@@ -105,4 +105,8 @@ venv.bak/
 
 personalNotes
 
+# no need to push imaages, might be a bigger folder in future
 IndiaMartScraping/IndiaMartScraping/images
+
+# Don't push mysql password file
+IndiaMartScraping/IndiaMartScraping/mysqlPassword.txt 
