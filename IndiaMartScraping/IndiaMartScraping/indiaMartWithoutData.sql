@@ -28,9 +28,8 @@ CREATE TABLE `category` (
   `image` varchar(100) DEFAULT NULL,
   `idGroupRef` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`idcategory`),
-  KEY `fk_category_1_idx` (`idGroupRef`),
-  CONSTRAINT `fk_category_1` FOREIGN KEY (`idGroupRef`) REFERENCES `mainGroups` (`idmainCategory`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `ix_category_6ae999552a0d2dca` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,7 +53,7 @@ CREATE TABLE `mainGroups` (
   `name` varchar(255) DEFAULT NULL,
   `image` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`idmainCategory`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,8 +74,13 @@ DROP TABLE IF EXISTS `pageDetails`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pageDetails` (
   `idpageDetails` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`idpageDetails`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `pageTitle` varchar(100) DEFAULT NULL,
+  `pageMainHeading` varchar(255) DEFAULT NULL,
+  `pageSubHeading` varchar(255) DEFAULT NULL,
+  `pageMainTag` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`idpageDetails`),
+  KEY `ix_pageDetails_d2566455a6d91453` (`idpageDetails`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,10 +103,8 @@ CREATE TABLE `subCategory` (
   `idsubCategory` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
   `idCategoryRef` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`idsubCategory`),
-  KEY `fk_subCategory_1_idx` (`idCategoryRef`),
-  CONSTRAINT `fk_subCategory_1` FOREIGN KEY (`idCategoryRef`) REFERENCES `category` (`idcategory`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`idsubCategory`)
+) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,4 +125,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-09-18 22:49:58
+-- Dump completed on 2019-09-22 16:29:49
